@@ -32,10 +32,8 @@ function convolution (state, actions) {
     } else if (arg === 'meta') {
                                                             if (constructor) {
                                                               if (this instanceof convolution) {
-                                                                console.log(1)
                                                                 return copy(this);
                                                               } else {
-                                                                console.log(2)
                                                                 return this;
                                                               };
                                                             } else {
