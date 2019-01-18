@@ -69,8 +69,12 @@ function convolution (state, actions) {
         return result;
       };
 
+    } else if ( arg === undefined ) {                       if (constructor) {
+                                                              this.log.push({undefined: null});  };
+      return null;
+
     } else {                                               
-      const err = new Error('invalid argument');            if (constructor) {
+      const err = new Error('i don\'t do that');            if (constructor) {
                                                               const err_log = {arg};
                                                               err_log.err = err;
                                                               err_log.notes = log_info;
