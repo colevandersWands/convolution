@@ -13,7 +13,7 @@ function convolution (state, actions) {
                                                              }; };
 
     if (isObject(arg)) {                                    if (constructor) {
-                                                              if (!(this.__proto__ instanceof convolution)) {
+                                                              if (!(this instanceof convolution)) {
                                                                 return 'you killed meta';
                                                               };
                                                               try {
