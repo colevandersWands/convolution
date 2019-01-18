@@ -2,14 +2,12 @@ function convolution (state, actions) {
 
   const constructor = this instanceof convolution;
 
-  // build base function for app instance
   let instance = function (arg, log_info) {                 // users can clear the log
                                                             //  but not remove it, or change it's type
                                                             if (constructor) {
                                                              if (!(this.log instanceof Array)) {
                                                               this.log = [];
                                                              }; };
-    // check if arg is a log call object
     if (arg instanceof Function) {                        
       const result = arg(state);                            const new_entry = {};
                                                             if (constructor) {
@@ -87,7 +85,7 @@ function convolution (state, actions) {
     };
   };
 
-  // freeze and return object so it can't be modified later
+  // freeze and return instance so it can't be modified later
   return Object.freeze(instance);
 
   // closed utilites for instance
