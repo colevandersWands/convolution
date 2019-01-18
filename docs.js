@@ -11,7 +11,9 @@
     // you can use it to keep any notes about the instance by passing payloads through instance()
     // and handling them in meta
     // the only thing you can't mess with is the .log it will always be there, and it will be an array
-// to permanently kill meta access for each instance, simply have conv.proto.meta redirect 'this's __proto__
+// to kill meta access for each instance, simply have conv.proto.meta redirect 'this's __proto__
+  // to resurrect meta, call inst('meta') will give you a pointer to meta. reset it's __proto__
+    // unfinished
 // initializing actions not an object leaves the app with no methods, but still able to accept partial state functions
 // initializing with state not an object leaves 'no state here' as the permanant state 
 // can turn bound this into a full oop program that feels almost functional by {action: '', args: []}

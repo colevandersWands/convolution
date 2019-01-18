@@ -17,9 +17,24 @@ function convolution (state, actions) {
                                                                 return 'you killed meta';
                                                               };
                                                               try {
-                                                                return this.meta(arg);
+                                                                const result = this.meta(arg);
+                                                                if (result instanceof Error) {
+                                                                  throw result;
+                                                                } else {
+                                                                  return result;
+                                                                };
                                                               } catch (err) {
-                                                                return err;
+                                                                throw err;
+                                                              };
+                                                            } else {
+                                                              return 'no meta here';
+                                                            };
+    } else if (arg === 'meta') {
+                                                            if (constructor) {
+                                                              if (this instanceof convolution) {
+                                                                return copy(this);
+                                                              } else { // todo
+                                                                return this;
                                                               };
                                                             } else {
                                                               return 'no meta here';
