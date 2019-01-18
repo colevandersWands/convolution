@@ -13,10 +13,13 @@ function convolution (state, actions) {
                                                              }; };
 
     if (isObject(arg)) {                                    if (constructor) {
+                                                              if (!(this.__proto__ instanceof convolution)) {
+                                                                return 'you killed meta';
+                                                              };
                                                               try {
                                                                 return this.meta(arg);
-                                                              } catch {
-                                                                return 'you killed meta';
+                                                              } catch (err) {
+                                                                return err;
                                                               };
                                                             } else {
                                                               return 'no meta here';
@@ -96,6 +99,8 @@ function convolution (state, actions) {
 
   // freeze and return instance so it can't be modified later
   return Object.freeze(instance);
+
+
 
   // closed utilites for instance
   function update_state(result, _state) {
