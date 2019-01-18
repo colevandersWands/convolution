@@ -1,5 +1,8 @@
 function convolution (state, actions) {
 
+  if (!isObject(state)) {
+    state = 'no state here';          
+  };
   const constructor = this instanceof convolution;
 
   let instance = function (arg, log_info) {                 // users can clear the log
@@ -8,7 +11,25 @@ function convolution (state, actions) {
                                                              if (!(this.log instanceof Array)) {
                                                               this.log = [];
                                                              }; };
-    if (arg instanceof Function) {                        
+
+    if (isObject(arg)) {                                    if (constructor) {
+                                                              try {
+                                                                return this.meta(arg);
+                                                              } catch {
+                                                                return 'you killed meta';
+                                                              };
+                                                            } else {
+                                                              return 'no meta here';
+                                                            };
+    } else if (arg === 'state') {                           
+                                                            if (constructor) {
+                                                              const new_entry = {};
+                                                              new_entry.notes = log_info;
+                                                              new_entry.state = copy(state);
+                                                              this.log.push(new_entry);  };
+      return copy(state);
+
+    } else if (arg instanceof Function) {                        
       const result = arg(state);                            const new_entry = {};
                                                             if (constructor) {
                                                               try { // allows manual state updates
@@ -44,18 +65,6 @@ function convolution (state, actions) {
                                                               this.log.push(new_entry); }
         return result;
       };
-
-    } else if (isObject(arg)) {                             if (constructor) {
-                                                              return this.access_log(arg);
-                                                            } else {
-                                                              return 'no log, sorry';
-                                                            };
-
-    } else if (arg === 'state') {                           if (constructor) {
-                                                              const new_entry = copy(state);
-                                                              new_entry.notes = log_info;
-                                                              this.log.push(new_entry);  };
-      return copy(state);
 
     } else {                                               
       const err = new Error('invalid argument');            if (constructor) {
@@ -116,7 +125,7 @@ function convolution (state, actions) {
   }
 };
 
-convolution.prototype.access_log = function(args){
+convolution.prototype.meta = function(args){
                                 if (args.clear) {
                                   this.log = [];
                                 };
