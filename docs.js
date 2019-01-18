@@ -15,6 +15,7 @@
 // initializing actions not an object leaves the app with no methods, but still able to accept partial state functions
 // initializing with state not an object leaves 'no state here' as the permanant state 
 // can turn bound this into a full oop program that feels almost functional by {action: '', args: []}
+// assume people don't use both in a note
 
 /*
 const papp = new convolution();

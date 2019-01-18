@@ -27,7 +27,8 @@ function convolution (state, actions) {
     } else if (arg === 'state') {                           
                                                             if (constructor) {
                                                               const new_entry = {};
-                                                              new_entry.notes = log_info;
+                                                              if (log_info !== undefined) {
+                                                                new_entry.notes = log_info; };
                                                               new_entry.state = copy(state);
                                                               this.log.push(new_entry);  };
       return copy(state);
@@ -40,14 +41,16 @@ function convolution (state, actions) {
                                                                   log_info.name === undefined) {
                                                                   // assume people don't use both in a note
                                                                   new_entry.action = arg;
-                                                                  new_entry.notes = log_info;
+                                                                  if (log_info !== undefined) {
+                                                                    new_entry.notes = log_info; };
                                                                 } else {
                                                                   new_entry.action = log_info.name; 
                                                                   new_entry.args = log_info.args;
                                                                 }; 
                                                               } catch {
                                                                 new_entry.action = arg;
-                                                                new_entry.notes = log_info;
+                                                                if (log_info !== undefined) {
+                                                                  new_entry.notes = log_info; };
                                                               }; /* comment this beast later */ };
                      
                                 
@@ -77,7 +80,8 @@ function convolution (state, actions) {
       const err = new Error('i don\'t do that');            if (constructor) {
                                                               const err_log = {arg};
                                                               err_log.err = err;
-                                                              err_log.notes = log_info;
+                                                              if (log_info !== undefined) {
+                                                                new_entry.notes = log_info; };
                                                               this.log.push(err_log);  };
                                                            
       throw err;
