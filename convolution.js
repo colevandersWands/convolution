@@ -153,17 +153,19 @@ function convolution (state, actions) {
   }
 };
 
-convolution.prototype.meta = function(args){
-                                if (args.clear) {
-                                  this.log = [];
-                                };
-                                if (args.flag !== undefined) {
-                                  this.log.push(args.flag);
-                                };
-                                if (args.read) {
-                                  return this.log;
-                                };
-                              };
+
+
+                                      convolution.prototype.meta = function(args){
+                                                                      if (args.clear) {
+                                                                        this.log = [];
+                                                                      };
+                                                                      if (args.flag !== undefined) {
+                                                                        this.log.push(args.flag);
+                                                                      };
+                                                                      if (args.read) {
+                                                                        return this.log;
+                                                                      };
+                                                                    };
 
 
 
