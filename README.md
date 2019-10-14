@@ -1,4 +1,4 @@
-so cool framework to be the centerpiece of the second part of class
+so cool framework 
 
 shallow learning objectives:
 * working with frameworks
